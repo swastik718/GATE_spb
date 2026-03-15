@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Background: Base fallback color */
+    --background: #fdfcff;
+    /* Bright, unique mesh gradient */
+    --bg-mesh: 
+      radial-gradient(at 0% 0%, hsla(242, 100%, 91%, 1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(290, 100%, 91%, 1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(196, 100%, 89%, 1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(330, 100%, 91%, 1) 0px, transparent 50%);
+      
+    --foreground: #09090b;
+    
+    /* Cards: Crisp pure white with a very subtle greyish-blue tint */
+    --card: #ffffff;
+    --card-foreground: #09090b;
+    
+    /* Primary: A rich, vibrant royal indigo (very SaaS/modern tech) */
+    --primary: #4f46e5;
+    --primary-foreground: #ffffff;
+    
+    /* Secondary: A soft, muted slate/indigo mix instead of generic grey */
+    --secondary: #e0e7ff;
+    --secondary-foreground: #1e1b4b;
+    
+    /* Muted: Lighter background areas */
+    --muted: #f3f4f6;
+    --muted-foreground: #6b7280;
+    
+    /* Borders and inputs with a subtle bluish tint */
+    --border: #e5e7eb;
+    --input: #e5e7eb;
+    --ring: #4f46e5;
+    
+    --radius: 0.75rem; /* slightly rounder, friendlier modern feel */
+  }
+ 
+  .dark {
+    /* Dark Mode: Deep base color */
+    --background: #09090e;
+    /* Vibrant, deep space premium mesh gradient */
+    --bg-mesh: 
+      radial-gradient(at 0% 0%, hsla(242, 85%, 22%, 1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(290, 85%, 22%, 1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(196, 85%, 18%, 1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(330, 85%, 22%, 1) 0px, transparent 50%);
+      
+    --foreground: #fafafa;
+    
+    /* Card: Slightly elevated dark background */
+    --card: #14141a;
+    --card-foreground: #fafafa;
+    
+    /* Primary: A brighter, glowing indigo for dark mode contrast */
+    --primary: #6366f1;
+    --primary-foreground: #ffffff;
+    
+    /* Secondary: Soft dark grey-blue */
+    --secondary: #1e1b4b;
+    --secondary-foreground: #e0e7ff;
+    
+    /* Muted: Lighter grey for dark mode text */
+    --muted: #1f2937;
+    --muted-foreground: #9ca3af;
+    
+    /* Deeper, more sophisticated borders */
+    --border: #374151;
+    --input: #374151;
+    --ring: #6366f1;
+  }
+
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+
+  body {
+    background-color: var(--background);
+    background-image: var(--bg-mesh);
+    background-attachment: fixed;
+    @apply text-[var(--foreground)] antialiased transition-colors duration-300 min-h-screen;
+  }
+}
+
+@layer utilities {
+  .bg-background {
+    background-color: var(--background);
+    background-image: var(--bg-mesh);
+    background-attachment: fixed;
+  }
+
+  .glass {
+    @apply bg-white/60 dark:bg-[#09090e]/60 backdrop-blur-xl border border-white/40 dark:border-white/5;
+  }
+  
+  .glass-card {
+    @apply bg-white/40 dark:bg-[#14141a]/60 backdrop-blur-2xl border border-white/50 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-400;
+  }
+}
